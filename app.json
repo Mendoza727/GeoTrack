@@ -1,28 +1,38 @@
 {
   "expo": {
-    "name": "09-GeoTrack",
-    "slug": "09-GeoTrack",
+    "name": "GeoTrack",
+    "slug": "GeoTrack",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/GeoTrack-icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "./assets/GeoTrack-icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "This app uses the location to track your location",
+        "NSLocationAlwaysUsageDescription": "This app uses the location to track your location",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "This app uses the location to track your location"
+      }
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/GeoTrack-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.geotrack.app",
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION"
+      ]
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/GeoTrack-icon.png"
     }
   }
 }
