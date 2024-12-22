@@ -1,21 +1,27 @@
-import React from 'react'
-import { StyleSheet, Text, View, Platform } from 'react-native';
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'
+import { Map } from '@/components/maps/Map';
+import { useLocationStore } from '@/stores/location/useLocationStore';
+import React, { useEffect } from 'react'
+import { StyleSheet, View } from 'react-native';
+import LoadingScreen from '../loading/LoadingScreen';
 
 export const MapScreen = () => {
+  const { getLocation, lastknownLocation } = useLocationStore();
+
+  useEffect(() => {
+    if ( lastknownLocation === null ) {
+      getLocation();
+    }
+  }, []);
+
+  if ( lastknownLocation === null ) {
+    return <LoadingScreen />;
+  }
+
   return (
     <View style={styles.container}>
-      <MapView
-        provider={Platform.OS === 'ios' ? undefined : PROVIDER_GOOGLE} // remove if not using Google Maps
-        style={styles.map}
-        region={{
-          latitude: 37.78825,
-          longitude: -122.4324,
-          latitudeDelta: 0.015,
-          longitudeDelta: 0.0121,
-        }}
-      >
-      </MapView>
+      <Map  
+        initialRegion={ lastknownLocation }
+      />
     </View>
   )
 }
@@ -23,8 +29,5 @@ export const MapScreen = () => {
 const styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFillObject,
-  },
-  map: {
-    ...StyleSheet.absoluteFillObject,
-  },
+  }
 });
