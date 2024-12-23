@@ -18,6 +18,12 @@
         "NSLocationWhenInUseUsageDescription": "This app uses the location to track your location",
         "NSLocationAlwaysUsageDescription": "This app uses the location to track your location",
         "NSLocationAlwaysAndWhenInUseUsageDescription": "This app uses the location to track your location"
+      },
+      "bundleIdentifier": "com.geotrack.app",
+      "config": {
+        "googleMaps": {
+          "apiKey": "YOUR_API_KEY_IOS"
+        }
       }
     },
     "android": {
@@ -29,7 +35,12 @@
       "permissions": [
         "ACCESS_COARSE_LOCATION",
         "ACCESS_FINE_LOCATION"
-      ]
+      ],
+      "config": {
+        "googleMaps": {
+          "apiKey": "YOUR_API_KEY_ANDROID"
+        }
+      }
     },
     "web": {
       "favicon": "./assets/GeoTrack-icon.png"
